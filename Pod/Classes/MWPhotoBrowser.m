@@ -177,7 +177,12 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
         _nextButton = [[UIBarButtonItem alloc] initWithImage:nextButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(gotoNextPage)];
     }
     if (self.displayActionButton) {
-        _actionButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(actionButtonPressed:)];
+        if (self.actionTitle) {
+            _actionButton = [[UIBarButtonItem alloc] initWithTitle:self.actionTitle style:UIBarButtonItemStylePlain target:self action:@selector(actionButtonPressed:)];
+        } else {
+            _actionButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(actionButtonPressed:)];
+        }
+        
     }
     
     // Update
